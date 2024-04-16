@@ -1,0 +1,52 @@
+/* Reset básico para remover margens e padding padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif; /* Define uma fonte padrão mais legível */
+    line-height: 1.6; /* Espaçamento entre linhas para melhor legibilidade */
+    color: #333; /* Cor de texto mais suave */
+    background-color: #f4f4f4; /* Cor de fundo clara para o site */
+}
+
+section {
+    padding: 20px; /* Espaçamento interno para cada seção */
+    margin-top: 20px; /* Espaço entre seções */
+    background: #fff; /* Fundo branco para destacar o conteúdo das seções */
+    border: 1px solid #ddd; /* Borda sutil para as seções */
+}
+
+h1, h2 {
+    color: #005a87; /* Cor para os títulos, combinando com o cabeçalho */
+}
+
+input[type="text"], input[type="email"], textarea {
+    width: 100%; /* Faz os campos de texto ocuparem todo o espaço disponível */
+    padding: 8px; /* Espaçamento interno nos campos */
+    margin-top: 5px; /* Espaço acima de cada campo */
+    margin-bottom: 10px; /* Espaço abaixo de cada campo */
+    border: 1px solid #ddd; /* Borda sutil para os campos */
+}
+
+button {
+    background-color: #005a87; /* Cor de fundo para o botão */
+    color: #ffffff; /* Cor de texto para o botão */
+    border: none; /* Remove a borda do botão */
+    padding: 10px 20px; /* Espaçamento interno no botão */
+    cursor: pointer; /* Muda o cursor para indicar clicabilidade */
+}
+
+footer {
+    text-align: center; /* Centraliza o texto no rodapé */
+    padding: 10px 0; /* Espaçamento interno no rodapé */
+    background-color: #333; /* Cor de fundo escura para o rodapé */
+    color: white; /* Cor de texto clara para contraste no rodapé */
+}
+
+/* Adiciona uma pequena animação ao passar o mouse sobre os links */
+nav ul li a:hover {
+    color: #aad4e5;
+}

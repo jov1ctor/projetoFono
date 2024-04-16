@@ -1,0 +1,19 @@
+<!-- pacientes.component.html -->
+<div>
+    <h2>Área do Paciente</h2>
+    <p>Selecione seu nome para ver seus exercícios:</p>
+    <select (change)="onSelect($event.target)">
+        <option value="">Selecione seu nome</option>
+        <option *ngFor="let patient of patients" [value]="patient.name">{{ patient.name }}</option>
+    </select>
+
+    <div *ngIf="selectedPatient">
+        <h3>Exercícios para {{ selectedPatient.name }}</h3>
+        <ul>
+            <li *ngFor="let exercise of selectedPatient.exercises">
+                <strong>{{ exercise.exercise }}</strong> - {{ exercise.description }}
+                <button (click)="realizarExercicio(exercise)">Realizar</button>
+            </li>
+        </ul>
+    </div>
+</div>

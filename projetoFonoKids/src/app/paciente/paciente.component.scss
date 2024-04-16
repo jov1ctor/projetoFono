@@ -1,0 +1,63 @@
+/* pacientes.component.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    color: #0056b3;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+}
+
+option {
+    padding: 8px;
+}
+
+div {
+    margin-top: 20px;
+}
+
+h3 {
+    margin-top: 20px;
+    color: #004085;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px 16px;
+    margin-top: 5px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #218838;
+}

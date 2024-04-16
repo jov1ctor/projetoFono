@@ -1,0 +1,21 @@
+header {
+    background-color: #005a87; /* Cor de fundo para o cabeçalho */
+    color: #fff;
+    padding: 10px 20px; /* Espaçamento interno no cabeçalho */
+    text-align: center; /* Centraliza o texto no cabeçalho */
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }

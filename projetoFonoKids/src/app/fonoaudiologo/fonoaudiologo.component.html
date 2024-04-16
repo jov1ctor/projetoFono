@@ -1,0 +1,26 @@
+<!-- patient-control.component.html -->
+<h1>Controle de Paciente - Fonoaudiologia</h1>
+<label for="patient-select">Escolha um paciente:</label>
+<select id="patient-select" (change)="onSelect($event.target)">
+    <option value="">Selecione um paciente</option>
+    <option *ngFor="let patient of patients" [value]="patient.name">{{ patient.name }}</option>
+  </select>
+
+<table *ngIf="selectedPatient">
+    <thead>
+        <tr>
+            <th>Exercício</th>
+            <th>Descrição</th>
+            <th>Frequência</th>
+            <th>Observações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let exercise of selectedPatient?.exercises">
+            <td>{{ exercise.exercise }}</td>
+            <td>{{ exercise.description }}</td>
+            <td>{{ exercise.frequency }}</td>
+            <td>{{ exercise.notes }}</td>
+          </tr>
+    </tbody>
+</table>
