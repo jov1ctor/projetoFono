@@ -3,24 +3,47 @@
 <label for="patient-select">Escolha um paciente:</label>
 <select id="patient-select" (change)="onSelect($event.target)">
     <option value="">Selecione um paciente</option>
-    <option *ngFor="let patient of patients" [value]="patient.name">{{ patient.name }}</option>
+    <option *ngFor="let patient of pacienteFono" [value]="patient.nome">{{ patient.nome }}</option>
   </select>
 
-<table *ngIf="selectedPatient">
-    <thead>
-        <tr>
-            <th>Exercício</th>
-            <th>Descrição</th>
-            <th>Frequência</th>
-            <th>Observações</th>
+<div *ngIf="selectedPatient">
+    <form (submit)="adicionarExercicio()">
+        <div>
+          <label for="exercicio">Exercício:     </label>
+          <input type="text" id="exercicio" [(ngModel)]="novoExercicio.nome" name="exercicio" required>
+        </div>
+        <div>
+          <label for="descricao">Descrição:     </label>
+          <input type="text" id="descricao" [(ngModel)]="novoExercicio.descricao" name="descricao" required>
+        </div>
+        <div>
+          <label for="frequencia">Frequência:   </label>
+          <input type="text" id="frequencia" [(ngModel)]="novoExercicio.frequencia" name="frequencia" required>
+        </div>
+        <div>
+          <label for="observacoes">Observações:     </label>
+          <input type="text" id="observacoes" [(ngModel)]="novoExercicio.observacoes" name="observacoes">
+        </div>
+        <button type="submit">Adicionar Exercício</button>
+      </form>
+    <table>    
+        <thead>
+            <tr>
+                <th>Exercício</th>
+                <th>Descrição</th>
+                <th>Frequência</th>
+                <th>Observações</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listaExercicios">
+            <ng-container *ngFor="let exercise of item">
+                <td>{{ exercise.exercicio }}</td>
+                <td>{{ exercise.descricao }}</td>
+                <td>{{ exercise.frequencia }}</td>
+                <td>{{ exercise.observacao }}</td>
+            </ng-container>
         </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let exercise of selectedPatient?.exercises">
-            <td>{{ exercise.exercise }}</td>
-            <td>{{ exercise.description }}</td>
-            <td>{{ exercise.frequency }}</td>
-            <td>{{ exercise.notes }}</td>
-          </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>

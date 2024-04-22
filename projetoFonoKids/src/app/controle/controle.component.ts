@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PacientesService } from '../pacientes.service';
 
 interface ClienteInfo {
   nome: string;
@@ -16,6 +17,9 @@ interface ClienteInfo {
   styleUrl: './controle.component.scss'
 })
 export class ControleComponent {
+  // private pacientesService: PacientesService  // Injeção do serviço de pacientes
+  constructor(private pacientesService: PacientesService) {}
+
   clientes: ClienteInfo[] = [
     {
       nome: "Pedro",
@@ -43,6 +47,7 @@ export class ControleComponent {
     const selectElement = target as HTMLSelectElement; // Cast para HTMLSelectElement
     const selectedCliente = selectElement.value;
     this.selectedCliente = this.clientes.find(cliente => cliente.nome === selectedCliente) || null;
+    console.log('LISTA = ', this.pacientesService.getPacientes());
   }
   
 }

@@ -3,10 +3,12 @@ import { PaginaSecundariaComponent } from './pagina-secundaria/pagina-secundaria
 import { FonoaudiologoComponent } from './fonoaudiologo/fonoaudiologo.component';
 import { PacienteComponent } from './paciente/paciente.component';
 import { ControleComponent } from './controle/controle.component';
+import { CadastrarPacienteComponent } from './cadastrar-paciente/cadastrar-paciente.component';
 
 export const routes: Routes = [
     {path: 'teste', component: PaginaSecundariaComponent},
     { path: 'fonoaudiologo', component: FonoaudiologoComponent },
     { path: 'paciente', component: PacienteComponent },
-    { path: 'controle', component: ControleComponent }
+    { path: 'controle', component: ControleComponent },
+    { path: 'cadastro-paciente', component: CadastrarPacienteComponent }
 ];

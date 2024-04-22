@@ -1,0 +1,23 @@
+<!-- cadastrar-paciente.component.html -->
+<div class="container">
+    <form [formGroup]="pacienteForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="nome">Nome do Paciente:</label>
+        <input type="text" id="nome" formControlName="nome" placeholder="Nome">
+      </div>
+      <div>
+        <label for="frequencia">Frequência das Visitas:</label>
+        <input type="text" id="frequencia" formControlName="frequencia" placeholder="Frequencia">
+      </div>
+      <div>
+        <label for="pagamento">Pagamento:</label>
+        <input type="text" id="pagamento" formControlName="pagamento" placeholder="Pagamento">
+      </div>
+      <div>
+        <label for="diasVisita">Dias de Visita:</label>
+        <input type="text" id="diasVisita" formControlName="diasVisita" placeholder="Dias de visita">
+      </div>
+      <button type="submit" [disabled]="!pacienteForm.valid">Cadastrar Paciente</button>
+    </form>
+  </div>
+  

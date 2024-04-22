@@ -1,34 +1,58 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PacientesService } from '../pacientes.service';
+import { FormsModule } from '@angular/forms'; // Importe FormsModule se você estiver usando formulários baseados em template
+import {PacienteFono} from '../pacienteUsadoFono';
+import {Paciente} from '../pacienteCadastrado';
 
 @Component({
   selector: 'app-fonoaudiologo',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './fonoaudiologo.component.html',
   styleUrl: './fonoaudiologo.component.scss'
 })
 export class FonoaudiologoComponent {
-  patients = [
-    { name: 'Pedro', exercises: [
-      { exercise: 'Exercício 1', description: 'Respiração profunda', frequency: 'Diariamente', notes: 'Sem restrições' },
-      { exercise: 'Exercício 2', description: 'Articulação', frequency: '3 vezes por semana', notes: 'Focar em vogais' }
-    ]},
-    { name: 'Maria', exercises: [
-      { exercise: 'Exercício A', description: 'Modulação de voz', frequency: 'Semanalmente', notes: 'Controlar o volume' },
-      { exercise: 'Exercício B', description: 'Fluência', frequency: 'Diariamente', notes: 'Atenção à respiração' }
-    ]},
-    { name: 'Caio', exercises: [
-      { exercise: 'Exercício X', description: 'Exercício de sopro', frequency: 'Diariamente', notes: 'Usar apito' },
-      { exercise: 'Exercício Y', description: 'Alongamento', frequency: '2 vezes por semana', notes: 'Relaxar o maxilar' }
-    ]}
-  ];
+  constructor(private pacientesService: PacientesService) {}
+  nomeMembro: string = '';
+  exerciciosPaciente: any | undefined;
+  listaExercicios: any[] | undefined;
+  arrayDeObjetos: any[]=[];
+  pacienteFonoInc: PacienteFono | undefined;
+  // pacienteFono = this.pacientesService.getPacientesFono(); // Certifique-se de que este método retorne PacienteFono[]
+  pacienteFono = this.pacientesService.getPacientes(); // Certifique-se de que este método retorne PacienteFono[]
+  novoExercicio = {
+    nome: '',
+    descricao: '',
+    frequencia: '',
+    observacoes: ''
+  };
+
+  exercicioNome = {
+    nome: '',
+    descricao: '',
+    frequencia: '',
+    observacoes: '',
+    nomePaciente:''
+  };
 
   selectedPatient: any = null;
-
+  
   onSelect(target: EventTarget | null): void {
     const selectElement = target as HTMLSelectElement; // Cast para HTMLSelectElement
     const patientName = selectElement.value;
-    this.selectedPatient = this.patients.find(p => p.name === patientName) || null;
+    this.nomeMembro=patientName;
+    this.selectedPatient = this.pacientesService.getpacienteByName(patientName);
+    this.listaExercicios=this.pacientesService.getExercisesFonoByName(this.nomeMembro);
+  }
+
+  adicionarExercicio(){
+    this.pacienteFonoInc = new PacienteFono(this.nomeMembro,[{'exercicio':this.novoExercicio.nome,'descricao':this.novoExercicio.descricao,'frequencia':this.novoExercicio.frequencia,'observacao':this.novoExercicio.observacoes}]);
+    this.pacientesService.addExercise(this.pacienteFonoInc);
+    this.listaExercicios=this.pacientesService.getExercisesFonoByName(this.nomeMembro);
+    this.limparFormulario();
+  }
+  limparFormulario(): void {
+    this.novoExercicio = { nome: '', descricao: '', frequencia: '', observacoes: '' };
   }
 }
