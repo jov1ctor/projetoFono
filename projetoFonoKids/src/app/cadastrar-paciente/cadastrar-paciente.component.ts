@@ -31,12 +31,11 @@ export class CadastrarPacienteComponent {
       diasVisita: ['', Validators.required]  // Pode ser aprimorado para lidar com múltiplas seleções
     });
   }
-
-  onSubmit() {
+  onSubmit() { 
     console.log(this.pacienteForm.value);
     // Aqui você pode adicionar lógica para enviar os dados para um serviço ou API
     console.log(this.pacienteForm.value.frequencia)
-    this.paciente = new Paciente(1,this.pacienteForm.value.nome,1,'Todas');
+    this.paciente = new Paciente(this.pacienteForm.value.nome,this.pacienteForm.value.frequencia,this.pacienteForm.value.pagamento,this.pacienteForm.value.diasVisita);
     // this.pacienteFono = new PacienteFono(this.pacienteForm.value.nome,[{exercicio: '', descricao: '',frequencia: '', observacao: ''}]);
     console.log(this.paciente.nome)
     this.pacientesLista.push(this.paciente);    

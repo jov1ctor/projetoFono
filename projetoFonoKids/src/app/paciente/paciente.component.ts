@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PacientesService } from '../pacientes.service';
 
 @Component({
   selector: 'app-paciente',
@@ -9,27 +10,18 @@ import { CommonModule } from '@angular/common';
   styleUrl: './paciente.component.scss'
 })
 export class PacienteComponent {
-  patients = [
-    { name: 'Pedro', exercises: [
-      { exercise: 'Exercício 1', description: 'Respiração profunda', frequency: 'Diariamente', notes: 'Sem restrições' },
-      { exercise: 'Exercício 2', description: 'Articulação', frequency: '3 vezes por semana', notes: 'Focar em vogais' }
-    ]},
-    { name: 'Maria', exercises: [
-      { exercise: 'Exercício A', description: 'Modulação de voz', frequency: 'Semanalmente', notes: 'Controlar o volume' },
-      { exercise: 'Exercício B', description: 'Fluência', frequency: 'Diariamente', notes: 'Atenção à respiração' }
-    ]},
-    { name: 'Caio', exercises: [
-      { exercise: 'Exercício X', description: 'Exercício de sopro', frequency: 'Diariamente', notes: 'Usar apito' },
-      { exercise: 'Exercício Y', description: 'Alongamento', frequency: '2 vezes por semana', notes: 'Relaxar o maxilar' }
-    ]}
-  ];
+  constructor(private pacientesService: PacientesService) {}
+  pacienteFono = this.pacientesService.getPacientes(); // Certifique-se de que este método retorne PacienteFono[]
 
+  listaExercicios: any[] | undefined;
   selectedPatient: any = null;
 
   onSelect(target: EventTarget | null): void {
     const selectElement = target as HTMLSelectElement;
     const patientName = selectElement.value;
-    this.selectedPatient = this.patients.find(p => p.name === patientName) || null;
+    this.selectedPatient = this.pacientesService.getpacienteByName(patientName);
+    this.listaExercicios=this.pacientesService.getExercisesFonoByName(patientName);
+    console.log('lista exercicios= ',this.listaExercicios);
   }
 
   realizarExercicio(exercise: any): void {

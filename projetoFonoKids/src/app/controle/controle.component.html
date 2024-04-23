@@ -3,7 +3,7 @@
     <h2>Informações de Controle dos Clientes</h2>
     <select (change)="onSelect($event.target)">
       <option value="">Selecione um paciente</option>
-      <option *ngFor="let cliente of clientes" [value]="cliente.nome">{{ cliente.nome }}</option>
+      <option *ngFor="let patient of pacienteFono" [value]="patient.nome">{{ patient.nome }}</option>
     </select>
   
     <div *ngIf="selectedCliente">
@@ -11,8 +11,7 @@
       <p><strong>Frequência de Visitas:</strong> {{ selectedCliente.frequencia }}</p>
       <p><strong>Pagamento:</strong> {{ selectedCliente.pagamento }}</p>
       <p><strong>Dias de Visita ao Fonoaudiólogo:</strong>
-        <ul>
-          <li *ngFor="let dia of selectedCliente.diasVisita">{{ dia }}</li>
-        </ul>
+        {{selectedCliente.diasVisita}}
+      </p>
     </div>
   </div>

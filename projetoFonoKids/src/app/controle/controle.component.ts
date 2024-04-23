@@ -19,7 +19,7 @@ interface ClienteInfo {
 export class ControleComponent {
   // private pacientesService: PacientesService  // Injeção do serviço de pacientes
   constructor(private pacientesService: PacientesService) {}
-
+  pacienteFono = this.pacientesService.getPacientes(); // Certifique-se de que este método retorne PacienteFono[]
   clientes: ClienteInfo[] = [
     {
       nome: "Pedro",
@@ -46,8 +46,8 @@ export class ControleComponent {
   onSelect(target: EventTarget | null): void {
     const selectElement = target as HTMLSelectElement; // Cast para HTMLSelectElement
     const selectedCliente = selectElement.value;
-    this.selectedCliente = this.clientes.find(cliente => cliente.nome === selectedCliente) || null;
-    console.log('LISTA = ', this.pacientesService.getPacientes());
+    this.selectedCliente = this.pacientesService.getpacienteByName(selectedCliente);
+    console.log('LISTA = ', this.pacientesService.getpacienteByName(selectedCliente));
   }
   
 }

@@ -28,6 +28,25 @@
     border-radius: 4px;
     cursor: pointer;
   }
+
+  select {
+    padding: 10px 20px;
+    background-color: #FFFF; /* Cor azul bebê fraquinha */
+    color: #555; /* Mudando a cor do texto para um cinza escuro para contraste */
+    border: 1px solid #B2EBF2; /* Adicionando uma borda sutil que complementa o fundo azul */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* Ajustando o tamanho da fonte para melhor legibilidade */
+    outline: none; /* Removendo o contorno ao focar para limpeza visual */
+    transition: background-color 0.3s, border-color 0.3s; /* Suavizando a transição de cores */
+}
+
+/* Melhorando a visualização ao focar no elemento */
+select:focus {
+    background-color: #f9f9f9; /* Um azul um pouco mais forte ao focar */
+    border-color: #81D4FA; /* Cor da borda ao focar para destacar */
+}
+
   
   button[disabled] {
     background-color: #ccc;

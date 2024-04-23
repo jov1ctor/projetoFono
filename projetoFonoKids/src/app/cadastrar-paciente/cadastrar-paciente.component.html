@@ -2,19 +2,28 @@
 <div class="container">
     <form [formGroup]="pacienteForm" (ngSubmit)="onSubmit()">
       <div>
-        <label for="nome">Nome do Paciente:</label>
+        <strong><label for="nome">Nome do Paciente:</label></strong>
         <input type="text" id="nome" formControlName="nome" placeholder="Nome">
       </div>
       <div>
-        <label for="frequencia">Frequência das Visitas:</label>
-        <input type="text" id="frequencia" formControlName="frequencia" placeholder="Frequencia">
-      </div>
-      <div>
-        <label for="pagamento">Pagamento:</label>
+      <strong><label for="frequencia">Frequência das Visitas:</label></strong>
+        <select id="frequencia" formControlName="frequencia">
+            <option value="">Selecione a frequência</option>
+            <option value="1">1 vez por semana</option>
+            <option value="2">2 vezes por semana</option>
+            <option value="3">3 vezes por semana</option>
+            <option value="4">4 vezes por semana</option>
+            <option value="5">5 vezes por semana</option>
+            <option value="6">6 vezes por semana</option>
+            <option value="7">7 vezes por semana</option>
+        </select>
+     </div>
+     <div>
+      <strong><label for="pagamento">Pagamento:</label></strong>
         <input type="text" id="pagamento" formControlName="pagamento" placeholder="Pagamento">
       </div>
       <div>
-        <label for="diasVisita">Dias de Visita:</label>
+      <strong><label for="diasVisita">Dias de Visita:</label></strong>
         <input type="text" id="diasVisita" formControlName="diasVisita" placeholder="Dias de visita">
       </div>
       <button type="submit" [disabled]="!pacienteForm.valid">Cadastrar Paciente</button>

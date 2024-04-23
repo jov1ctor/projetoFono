@@ -31,16 +31,6 @@ export class PacientesService {
     this.pacientes.push(paciente);
   }
 
-  removePaciente(id: number): void {
-    this.pacientes = this.pacientes.filter(p => p.id !== id);
-  }
-
-  updatePaciente(updatedPaciente: Paciente): void {
-    const index = this.pacientes.findIndex(p => p.id === updatedPaciente.id);
-    if (index !== -1) {
-      this.pacientes[index] = updatedPaciente;
-    }
-  }
   addExercise(pacienteFono: PacienteFono): void{
     this.pacientesFono.push(pacienteFono);
   } 
