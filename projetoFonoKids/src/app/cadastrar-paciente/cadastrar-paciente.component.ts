@@ -15,6 +15,7 @@ import { PacienteFono } from '../pacienteUsadoFono';
   imports:[CommonModule,ReactiveFormsModule]
 })
 export class CadastrarPacienteComponent {
+  showModal: boolean = false;
   pacienteForm: FormGroup;
   paciente: Paciente | undefined;
   pacienteFono: PacienteFono | undefined;
@@ -31,7 +32,7 @@ export class CadastrarPacienteComponent {
       diasVisita: ['', Validators.required]  // Pode ser aprimorado para lidar com múltiplas seleções
     });
   }
-  onSubmit() { 
+  onSubmit() {    
     console.log(this.pacienteForm.value);
     // Aqui você pode adicionar lógica para enviar os dados para um serviço ou API
     console.log(this.pacienteForm.value.frequencia)
@@ -41,5 +42,11 @@ export class CadastrarPacienteComponent {
     this.pacientesLista.push(this.paciente);    
     this.pacientesService.addPaciente(this.paciente);
     // this.pacientesService.addExercise(this.pacienteFono);
+    this.pacienteForm.reset(); // Limpa o formulário
+    this.toggleModal(); // Isso mostrará o modal após o cadastro bem-sucedido
+  }
+
+  toggleModal() {
+    this.showModal = !this.showModal;
   }
 }
