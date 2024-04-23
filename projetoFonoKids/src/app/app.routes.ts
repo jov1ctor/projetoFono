@@ -10,5 +10,6 @@ export const routes: Routes = [
     { path: 'fonoaudiologo', component: FonoaudiologoComponent },
     { path: 'paciente', component: PacienteComponent },
     { path: 'controle', component: ControleComponent },
-    { path: 'cadastro-paciente', component: CadastrarPacienteComponent }
+    { path: 'cadastro-paciente', component: CadastrarPacienteComponent },
+    { path: '', component: CadastrarPacienteComponent },
 ];
